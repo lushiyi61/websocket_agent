@@ -1,18 +1,16 @@
 package main
 
 import (
-	"io"
-	"log"
-	"net"
-
-	// "os"
-	// "fmt"
 	"bufio"
 	"bytes"
 	"crypto/sha1"
 	"encoding/base64"
 	"encoding/binary"
+	"io"
+	"log"
+	"net"
 	"net/http"
+	"os"
 	"runtime"
 	"strconv"
 	"strings"
@@ -349,13 +347,20 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 // ============主函数============
-var webSocketPort = "11305"
-var tcpSocketPort = "11306"
+var webSocketPort = "2305"
+var tcpSocketPort = "2306"
 var IPAddress = "0.0.0.0:"
 var num = 0
 var tcpServerAddr = "127.0.0.1:12306"
 
 func main() {
+	if len(os.Args) == 4 {
+		webSocketPort = string(os.Args[1])
+		tcpSocketPort = string(os.Args[2])
+		tcpServerAddr = string(os.Args[3])
+
+		log.Println(os.Args)
+	}
 
 	// webSocket
 	ws := NewSocket(IPAddress+string(webSocketPort), EWebSocket)
