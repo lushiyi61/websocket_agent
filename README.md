@@ -1,10 +1,23 @@
-# websocket_agency
-this can receive websocket from one client then connect to a server by tcp , then transfer msg between the two.
+# socket_agency
+实现socket服务器能够同时处理TcpSocket和WebSocket客户端
 
-usage:
-websocket_transfer_tcp 8888 0.0.0.0:8889
+# 运行指令:
+go run .\socket_agency.go 2305 2306 127.0.0.1:12306
 
-测试数据
+- go run .\socket_agency.go 
+- 2305 监听 WebSocket
+- 2306 监听 TcpSocket
+- 127.0.0.1:12306 目标socket服务器
+
+
+# 文件说明
+- socket_agency.go  socket代理，工作成果
+- socket_client_web.go WebSocket客户端（无，请在线测试 http://www.blue-zero.com/WebSocket/
+- socket_client_tcp.go TcpSocket客户端（测试文件）
+- socket_server_tcp.go 测试TcpSocket服务端（收到什么就转发什么）（测试文件）
+
+
+# 测试数据（他人测试结果）
 
 机器性能：
 4核 3G内存
