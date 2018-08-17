@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -27,8 +26,8 @@ func main() {
 
 func handleClient(conn net.Conn) {
 	conn.SetReadDeadline(time.Now().Add(2 * time.Minute)) // set 2 minutes timeout
-	request := make([]byte, 128) // set maxium request length to 128B to prevent flood attack
-	defer conn.Close()  // close connection before exit
+	request := make([]byte, 128)                          // set maxium request length to 128B to prevent flood attack
+	defer conn.Close()                                    // close connection before exit
 	for {
 		read_len, err := conn.Read(request)
 

@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -24,7 +23,7 @@ func main() {
 	checkError(err)
 
 	buf := make([]byte, 1024)
-	length,err := conn.Read(buf)
+	length, err := conn.Read(buf)
 	fmt.Println("recv from server : ", string(buf[:length]))
 
 	result, err := ioutil.ReadAll(conn)
